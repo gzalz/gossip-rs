@@ -33,6 +33,17 @@ pub struct ImmutableNetworkView {
     pub ttl: TTL,
 }
 
+impl ImmutableNetworkView {
+    pub fn default() -> Self {
+        Self {
+            assumed_network_size: 4,
+            active_view: HashMap::new(),
+            passive_view: HashMap::new(),
+            ttl: 3,
+        }
+    }
+}
+
 impl From<NetworkView> for ImmutableNetworkView {
     fn from(network_view: NetworkView) -> Self {
         Self {
